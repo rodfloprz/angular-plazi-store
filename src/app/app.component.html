@@ -1,3 +1,25 @@
-<!-- ngModel was added in order to demosntrate how I can implement a module -->
+<!-- ngModel was added in order to demonstrate how I can implement a module -->
 <input type="text" [(ngModel)]="title">
 {{title}}
+
+<!--I can define a conditional to show or hide information or element-->
+<div *ngIf="title == 'nicolas'">Esto es un DIV </div>
+
+<button (click) = "addItem()" >Add item</button>
+
+<ul>
+    <li *ngIf = " items.length == 0 ">La lista está vacía</li>
+    <!--In this case I iterate the products array defined in components.ts with an variable "name" -->
+    <li *ngFor = "let name of items; index as counter">
+        {{ name }} {{counter}}
+        <!--I also define click action in a button component and performs and action defined in components.ts -->
+        <button (click) = "deleteItem(counter)">delete {{counter}}</button>
+    </li>
+</ul>
+
+<div *ngFor = "let product of products">
+    {{ product.title }}
+    <!--Finally it is important to specify the type of object needed in squared brackets-->
+    <img [src]="product.image" alt="">
+    {{ product.price }}
+</div>
